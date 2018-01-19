@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import LoginPage from './LoginPage.js';
+import LoginPage from './containers/LoginPage.js';
 
 class App extends Component {
   render() {
