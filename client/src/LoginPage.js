@@ -5,6 +5,7 @@ export default class LoginPage extends React.Component {
   render () {
     return (
       <div className="login-page">
+        <img className="sign-in-logo" src={require("./img/logo.png")} alt="logo" />
         <div className="form">
           <form className="login-form">
             <input type="text" placeholder="username"/>
