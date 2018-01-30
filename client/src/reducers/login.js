@@ -8,22 +8,20 @@ const initialState = {
   error: undefined,
 }
 
-export default const (state = initialState, action) => {
+const LoginReducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.LOGIN_LOADING:
-      return: {
+      return {
         isLoading: true,
         ...initialState,
       }
     case ActionTypes.LOGIN_FAILED:
-      return: {
+      return {
         ...initialState,
-        error: 'login failed',
+        error: state.error,
       }
-    case ActionTypes.LOGIN_SUCCESSFUL: ({
-
-    })
-      return: {
+    case ActionTypes.LOGIN_SUCCESSFUL:
+      return {
         username: state.username,
         loggedin: true,
         ...initialState,
@@ -32,3 +30,5 @@ export default const (state = initialState, action) => {
       return state;
   }
 }
+
+export default LoginReducer;

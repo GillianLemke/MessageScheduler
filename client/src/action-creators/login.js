@@ -21,9 +21,13 @@ const loginSuccessful = (username) => ({
 export const loginRequest = (username, password) => {
   return dispatch => {
     dispatch(loginLoading());
-    return fetch('http://example.com/todos')
-      .then(res => res.json())
-      .then(username => dispatch(loginSuccessful(username)))
-      .catch(error => dispatch(loginFailed(error)))
+    return fetch('/api/login/${username}/')
+      .then(
+          response => response.json(),
+          error => dispatch(loginFailed(error)),
+        )
+        .then(json =>
+          dispatch(loginSuccessful(username))
+        )
   }
 }
