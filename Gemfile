@@ -14,6 +14,7 @@ gem 'puma', '~> 3.7'
 gem 'pg', '~> 0.18'
 
 gem 'faker'
+gem 'foreman', '~> 0.82.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
