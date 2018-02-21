@@ -19,14 +19,12 @@ const loginSuccessful = (username) => ({
 });
 
 export const loginRequest = (username, password) => {
-  console.log('in login action');
   return dispatch => {
     dispatch(loginLoading());
     return fetch(`/api/user/${username}/${password}`)
       .then(response => response.json())
       .then(json => dispatch(loginSuccessful(username)))
       .catch(error => {
-        console.log('error', error);
         return dispatch(loginFailed(error));
       });
   }

@@ -18,7 +18,6 @@ export default class LoginPage extends React.Component {
   }
 
   handleUsernameChange(event) {
-    console.log(event.target.value);
     this.setState({
       ...this.state,
       username: event.target.value,
@@ -26,7 +25,6 @@ export default class LoginPage extends React.Component {
   }
 
   handlePasswordChange(event) {
-    console.log(event.target.value);
     this.setState({
       ...this.state,
       password: event.target.value,
@@ -38,7 +36,6 @@ export default class LoginPage extends React.Component {
   }
 
   render () {
-    console.log(this.props);
     const { onLoginClick, match } = this.props;
     return (
       <div className="login-page">

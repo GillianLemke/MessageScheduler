@@ -8,8 +8,6 @@ const initialState = {
 }
 
 const LoginReducer = (state = initialState, action) => {
-  console.log('state');
-  console.log(state);
   switch (action.type) {
     case ActionTypes.LOGIN_LOADING:
       return {
