@@ -23,15 +23,11 @@ export const loginRequest = (username, password) => {
   return dispatch => {
     dispatch(loginLoading());
     return fetch(`/api/user/${username}/${password}`)
-      .then(
-          console.log('failed'),
-          response => response.json(),
-          error => dispatch(loginFailed(error)),
-        )
-        .then(json => {
-          console.log('failed');
-          dispatch(loginSuccessful(username));
-        }
-        )
+      .then(response => response.json())
+      .then(json => dispatch(loginSuccessful(username)))
+      .catch(error => {
+        console.log('error', error);
+        return dispatch(loginFailed(error));
+      });
   }
 }
