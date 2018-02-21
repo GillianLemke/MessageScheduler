@@ -1,13 +1,12 @@
-import React from 'react';
-import { push } from 'react-router-redux';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { loginRequest } from '../action-creators/login.js';
+import LoginPage from '../LoginPage.js';
 
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch) => ({
   onLoginClick: (username, password) => {
-    dispatch(login(username, password))
+    dispatch(loginRequest(username, password))
   }
 })
 

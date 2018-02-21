@@ -1,7 +1,8 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
-import LoginPage from '../LoginPage.js';
+import { Route } from 'react-router-dom';
+import LoginPage from './LoginPage.js';
 import SignupPage from '../SignupPage.js';
+import HomePage from '../HomePage.js';
 
 export default class App extends React.Component {
   render() {
@@ -11,6 +12,7 @@ export default class App extends React.Component {
           <Route exact path="/" component={LoginPage} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/signup" component={SignupPage} />
+          <Route exact path="/home" component={HomePage} />
         </main>
       </div>
     );
