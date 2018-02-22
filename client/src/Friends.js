@@ -9,16 +9,16 @@ export default class HomePage extends React.Component {
     const { match } = this.props;
     return (
       <div className="homepage">
-        <NavBar />
-        <SideBar
-          homeClass={"sidebar-button-active"}
-          newMessageClass={"sidebar-button"}
-          friendsClass={"sidebar-button"}
-          goldClass={"sidebar-button"}
-          settingsClass={"sidebar-button"}
-        />
-        <div className="screen"></div>
-        <div className="footer-bar"></div>
+      <NavBar />
+      <SideBar
+        homeClass={"sidebar-button"}
+        newMessageClass={"sidebar-button"}
+        friendsClass={"sidebar-button-active"}
+        goldClass={"sidebar-button"}
+        settingsClass={"sidebar-button"}
+      />
+      <div className="screen">friends page</div>
+      <div className="footer-bar"></div>
       </div>
     );
   }
