@@ -17,7 +17,20 @@ export default class HomePage extends React.Component {
           goldClass={"sidebar-button"}
           settingsClass={"sidebar-button"}
         />
-        <div className="screen"></div>
+        <div className="screen">
+          <h1 className="title">Dashboard</h1>
+          <hr className="homescreen" />
+          {this.props.messages && <div>message here</div>}
+          {!this.props.messages &&
+            <div className="dashboard-message-container">
+              <h1 className="no-messages">You have no scheduled messages</h1>
+              <Link to={`/new_message`} className="create-new.link">
+                <h3 className="create-new">Create a new one now!</h3>
+              </Link>
+            </div>
+          }
+          <hr className="homescreen" />
+        </div>
         <div className="footer-bar"></div>
       </div>
     );
