@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180117160726) do
+ActiveRecord::Schema.define(version: 20180307211552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "messages", force: :cascade do |t|
+    t.string "to"
+    t.string "from"
+    t.datetime "time"
+    t.integer "message_type", default: 1
+    t.boolean "reminder", default: false
+    t.datetime "reminder_time"
+    t.integer "repeat", default: 1
+    t.text "text"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", limit: 20
