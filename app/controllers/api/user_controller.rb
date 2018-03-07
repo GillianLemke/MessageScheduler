@@ -1,7 +1,7 @@
 module Api
   class UserController < ApplicationController
-    def index username, password
-      @user = User.where(["name = :name", { name: username }])
+    def index
+      @user = User.where(username: params[:username])
       render json: @user
     end
   end
