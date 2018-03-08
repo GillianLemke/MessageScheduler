@@ -36,6 +36,7 @@ export default class LoginPage extends React.Component {
   }
 
   render () {
+    // console.log(this.props);
     const { onLoginClick, match } = this.props;
     return (
       <div className="login-page">
@@ -44,7 +45,7 @@ export default class LoginPage extends React.Component {
           <form className="login-form">
             <input type="text" placeholder="username" onChange={this.handleUsernameChange} />
             <input type="password" placeholder="password" onChange={this.handlePasswordChange} />
-            <Link to={`${match.url}home`}>
+            <Link to={`${match.url}welcome_back`}>
               <button onClick={() => onLoginClick(this.state.username, this.state.password)}>login</button>
             </Link>
             <p className="message">Not registered? <a href="/signup">Signup here.</a></p>

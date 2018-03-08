@@ -6,7 +6,7 @@ export default class NavBar extends React.Component {
     return (
       <div className="navbar">
         <img className="navbar-logo" src={require("./img/logo.png")} alt="logo" />
-        <Link to={`/login`} className="logout-link"><a href="/login">Logout</a></Link>
+        <Link to={`/login`} className="logout-link">Logout</Link>
       </div>
     );
   }

@@ -3,6 +3,7 @@ import {
   LOGIN_FAILED,
   LOGIN_SUCCESSFUL
 } from '../constants/action-types.js';
+// import { getMessageRequest } from './homepage.js';
 import $ from 'jquery';
 
 const loginLoading = () => ({
@@ -14,14 +15,13 @@ const loginFailed = (error) => ({
   error,
 });
 
-const loginSuccessful = (username) => ({
+const loginSuccessful = (user) => ({
   type: LOGIN_SUCCESSFUL,
-  username,
+  username: user.username,
 });
 
 
-const test = (username, password) => {
-
+const loginUtility = (username, password) => {
   return $.ajax({
     type: 'GET',
     url: `http://localhost:3001/api/user`,
@@ -35,7 +35,9 @@ const test = (username, password) => {
     },
     dataType: 'json',
     success: function (data) {
-      console.log(data);
+      return dispatch => {
+        dispatch(loginSuccessful(data[0]));
+      }
     }
   });
 }
@@ -43,9 +45,8 @@ const test = (username, password) => {
 export const loginRequest = (username, password) => {
   return dispatch => {
     dispatch(loginLoading());
-    return test(username, password)
-      .then(response => response.json())
-      .then(json => dispatch(loginSuccessful(username)))
+    return loginUtility(username, password)
+      .then(response => dispatch(loginSuccessful(response[0])))
       .catch(error => {
         return dispatch(loginFailed(error));
       });

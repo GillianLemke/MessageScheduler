@@ -1,12 +1,19 @@
 import React from 'react';
 import './css/homepage.css';
-import { BrowserRouter as Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 import SideBar from './SideBar.js';
 import NavBar from './NavBar.js';
 
 export default class HomePage extends React.Component {
+
+  componentDidMount() {
+    console.log('homepage');
+    console.log(this.props);
+    const { username } = this.props;
+    this.props.getMessages(username);
+  }
+
   render() {
-    const { match } = this.props;
     return (
       <div className="homepage">
         <NavBar />

@@ -1,29 +1,52 @@
 import {
-
+  GET_MESSAGES_FAILED,
+  GET_MESSAGES_SUCCESSFUL,
+  GET_MESSAGES_LOADING,
 } from '../constants/action-types.js';
+import $ from 'jquery';
 
-const loginLoading = () => ({
-  type: LOGIN_LOADING,
+const getMessagesLoading = () => ({
+  type: GET_MESSAGES_LOADING,
 });
 
-const loginFailed = (error) => ({
-  type: LOGIN_FAILED,
+const getMessagesFailed = (error) => ({
+  type: GET_MESSAGES_FAILED,
   error,
 });
 
-const loginSuccessful = (username) => ({
-  type: LOGIN_SUCCESSFUL,
-  username,
+const getMessagesSuccessful = (messages) => ({
+  type: GET_MESSAGES_SUCCESSFUL,
+  messages,
 });
 
-export const loginRequest = (username, password) => {
+const getMessageUtility = (username) => {
+  return $.ajax({
+    type: 'GET',
+    url: `http://localhost:3001/api/message`,
+    data: {username: username},
+    async: false,
+    crossDomain: true,
+    beforeSend: function (xhr) {
+      if (xhr && xhr.overrideMimeType) {
+        xhr.overrideMimeType('application/json;charset=utf-8');
+      }
+    },
+    dataType: 'json',
+    success: function (data) {
+      console.log(data);
+    }
+  });
+}
+
+export const getMessageRequest = (username) => {
+  console.log('get message request');
   return dispatch => {
-    dispatch(loginLoading());
-    return fetch(`/api/user/${username}/${password}`)
-      .then(response => response.json())
-      .then(json => dispatch(loginSuccessful(username)))
+    dispatch(getMessagesLoading());
+    return getMessageUtility(username)
+      .then(response =>
+        dispatch(getMessagesSuccessful(response)))
       .catch(error => {
-        return dispatch(loginFailed(error));
+        return dispatch(getMessagesFailed(error));
       });
   }
 }

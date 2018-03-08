@@ -1,14 +1,17 @@
 import { connect } from 'react-redux';
-import { loginRequest } from '../action-creators/login.js';
+import { getMessageRequest } from '../action-creators/homepage.js';
 import HomePage from '../HomePage.js';
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {username: state.data.username, messages: state.data.messages};
+};
 
 const mapDispatchToProps = (dispatch) => ({
-  onLoginClick: (username, password) => {
-    dispatch(loginRequest(username, password))
+  getMessages: (username) => {
+    dispatch(getMessageRequest(username))
   }
-})
+});
 
 export default connect(
   mapStateToProps,
