@@ -14,6 +14,7 @@ import * as ActionTypes from '../constants/action-types.js';
 
 const appReducer = (state, action) => {
   console.log(action);
+  console.log(state);
   switch (action.type) {
     case ActionTypes.LOGIN_LOADING: {
       console.log('login loading');
@@ -31,6 +32,7 @@ const appReducer = (state, action) => {
       }
       // break;
     case ActionTypes.LOGIN_SUCCESSFUL:
+      localStorage.setItem( 'username', action.username );
       return {
         ...state,
         isLoading: false,

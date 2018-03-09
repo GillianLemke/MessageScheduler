@@ -162,3 +162,74 @@ hr.homescreen {
   margin-top: 7px;
   margin-bottom: 10px;
 }
+
+/*MESSAGE PREVIEW*/
+
+.message-preview-container {
+  height: 150px;
+  width: 250px;
+  margin-left: 15px;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border: 3px solid #dc631e;
+}
+
+.message-to-field {
+  font-size: 18px;
+}
+
+.message-time-field {
+  font-size: 18px;
+}
+.message-text-field {
+  font-size: 14px;
+  white-space: nowrap;
+  width: 230px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.message-preview-row {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.scroll-container {
+  max-height: 160px;
+  margin-left: 50px;
+}
+
+/*SCROLL ANIMATION*/
+.scroll-downs {
+  position: absolute;
+  top: 110px;
+  right: 0;
+  bottom: 0;
+  left: 10px;
+  margin: auto;
+}
+.mousey {
+  width: 3px;
+  padding: 10px 15px;
+  height: 35px;
+  border: 2px solid #000;
+  border-radius: 25px;
+  opacity: 0.75;
+  box-sizing: content-box;
+}
+.scroller {
+  width: 3px;
+  height: 10px;
+  border-radius: 25%;
+  background-color: #000;
+  animation-name: scroll;
+  animation-duration: 2.2s;
+  animation-timing-function: cubic-bezier(.15,.41,.69,.94);
+  animation-iteration-count: infinite;
+}
+@keyframes scroll {
+  0% { opacity: 0; }
+  10% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(15px); opacity: 0;}
+}

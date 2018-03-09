@@ -3,17 +3,34 @@ import './css/homepage.css';
 import { BrowserRouter as Link } from "react-router-dom";
 import SideBar from './SideBar.js';
 import NavBar from './NavBar.js';
+import MessagePreview from './MessagePreview.js';
+import HorizontalScroll from 'react-scroll-horizontal';
 
 export default class HomePage extends React.Component {
 
   componentDidMount() {
-    console.log('homepage');
-    console.log(this.props);
-    const { username } = this.props;
+    let username = localStorage.getItem("username");
     this.props.getMessages(username);
   }
 
+  static mapMessages(messages) {
+    let i = 0;
+    return messages.map(
+      (message) => {
+        return (
+          <MessagePreview
+            key={i++}
+            to={message.to}
+            time={message.time}
+            text={message.text}
+          />
+        )
+      });
+  }
+
   render() {
+    const { messages } = this.props;
+    console.log(messages);
     return (
       <div className="homepage">
         <NavBar />
@@ -27,8 +44,17 @@ export default class HomePage extends React.Component {
         <div className="screen">
           <h1 className="title">Dashboard</h1>
           <hr className="homescreen" />
-          {this.props.messages && <div>message here</div>}
-          {!this.props.messages &&
+          <div className="scroll-downs">
+            <div className="mousey">
+              <div className="scroller"></div>
+            </div>
+          </div>
+          {messages &&
+            <HorizontalScroll className="scroll-container">
+              {HomePage.mapMessages(messages)}
+            </HorizontalScroll>
+          }
+          {!messages &&
             <div className="dashboard-message-container">
               <h1 className="no-messages">You have no scheduled messages</h1>
               <Link to={`/new_message`} className="create-new.link">
