@@ -1,0 +1,130 @@
+.new-message-col-1 {
+  margin-left: 10px;
+}
+
+.new-message-form {
+
+}
+
+.email-input {
+  border: 1px solid #d9d9d9;
+  padding: 5px;
+  color: black;
+  background-color: #d9d9d9;
+  width: 30%;
+  border-radius: 5px;
+}
+
+.name-input {
+  border: 1px solid #d9d9d9;
+  padding: 5px;
+  color: black;
+  background-color: #d9d9d9;
+  width: 30%;
+  border-radius: 5px;
+}
+
+.repeat-input {
+  margin-top: 10px;
+  border: 1px solid #d9d9d9;
+  padding: 5px;
+  color: black;
+  background-color: #d9d9d9;
+  width: 15%;
+  color: black;
+  height: 35px;
+}
+
+/*CHECKBOX*/
+/* The container */
+.check-container {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-top: 10px;
+}
+
+/* Hide the browser's default radio button */
+.check-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  margin-top:2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.second {
+  margin-left: 20px;
+}
+
+input:disabled {
+  cursor: default;
+}
+
+.checkmark:disabled {
+  background-color: #808080;
+  cursor: default;
+}
+
+.check-container:disabled {
+  color: #808080;
+  cursor: default;
+}
+
+/* When the radio button is checked, add a blue background */
+.check-container input:checked ~ .checkmark {
+  background-color: #200f5f;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.check-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.check-container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+.form-control.text-input, .form-control.text-input:focus {
+  margin-top: 10px;
+  border: 0px;
+  background-color: #d9d9d9;
+  width: 30%;
+  border-radius: 5px;
+}
+
+.submit-message {
+  margin-top: 10px;
+  color: purple;
+  background-color: #200f5f !important;
+  border: 1px solid #200f5f !important;
+}

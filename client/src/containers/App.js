@@ -9,6 +9,9 @@ import Friends from '../Friends.js';
 import Gold from '../Gold.js';
 import Settings from '../Settings.js';
 
+import '../css/homepage.css';
+import '../css/message.css';
+
 export default class App extends React.Component {
   render() {
     return (
