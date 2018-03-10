@@ -1,36 +1,21 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
-// import LoginReducer from './login.js';
-// import MessageReducer from './message.js';
 import * as ActionTypes from '../constants/action-types.js';
 
-// const initialState = {
-//   username: null,
-//   loggedin: false,
-//   isLoading: false,
-//   error: undefined,
-//   messages: null,
-// }
-
 const appReducer = (state, action) => {
-  console.log(action);
-  console.log(state);
   switch (action.type) {
     case ActionTypes.LOGIN_LOADING: {
-      console.log('login loading');
       return {
         ...state,
         isLoading: true,
       }
     }
-    // break;
     case ActionTypes.LOGIN_FAILED:
       return {
         ...state,
         isLoading: false,
         error: action.error,
       }
-      // break;
     case ActionTypes.LOGIN_SUCCESSFUL:
       localStorage.setItem( 'username', action.username );
       return {
@@ -39,27 +24,39 @@ const appReducer = (state, action) => {
         username: action.username,
         loggedin: true,
       }
-      // break;
     case ActionTypes.GET_MESSAGES_LOADING:
       return {
         ...state,
         isLoading: true,
       }
-      // break;
     case ActionTypes.GET_MESSAGES_FAILED:
       return {
         ...state,
         isLoading: false,
         error: action.error,
       }
-      // break;
     case ActionTypes.GET_MESSAGES_SUCCESSFUL:
       return {
         ...state,
         isLoading: false,
         messages: action.messages,
       }
-      // break;
+    case ActionTypes.ADD_NEW_MESSAGE_LOADING:
+      return {
+        ...state,
+        isLoading: true,
+      }
+    case ActionTypes.ADD_NEW_MESSAGE_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.error,
+      }
+    case ActionTypes.ADD_NEW_MESSAGE_SUCCESSFUL:
+      return {
+        ...state,
+        isLoading: false,
+      }
     default:
       return { ...state };
   }

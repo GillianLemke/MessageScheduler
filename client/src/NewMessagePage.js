@@ -14,6 +14,7 @@ export default class NewMessagePage extends React.Component {
     this.handleRepeatChange = this.handleRepeatChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
+    this.sendNewMessage = this.sendNewMessage.bind(this);
   }
 
   handleNameChange(event) {
@@ -40,8 +41,24 @@ export default class NewMessagePage extends React.Component {
     });
   }
 
+  sendNewMessage() {
+    const message = {
+      from: localStorage.username,
+      to: this.state.email,
+      time: '2018-03-18 18:03:19',
+      message_type: 1,
+      reminder: !!(this.state.reminder_time),
+      reminder_time: this.state.reminder_time,
+      repeat: this.state.repeat,
+      text: this.state.text,
+    }
+
+    this.props.addNewMessage(message);
+  }
+
   render() {
     console.log(this.state);
+    console.log(this.props);
     return (
       <div className="homepage">
       <NavBar />
@@ -79,7 +96,7 @@ export default class NewMessagePage extends React.Component {
           <br/>
           <input className="email-input" type="text" placeholder="email" onChange={this.handleEmailChange} />
           <textarea className="form-control text-input" id="text" rows="3" placeholder="message" onChange={this.handleTextChange}/>
-          <button type="submit" className="btn btn-primary btn-md submit-message">SAVE</button>
+          <button type="submit" className="btn btn-primary btn-md submit-message" onClick={this.sendNewMessage}>SAVE</button>
         </form>
         </div>
       </div>

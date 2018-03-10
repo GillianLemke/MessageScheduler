@@ -4,7 +4,7 @@ import LoginPage from './LoginPage.js';
 import SignupPage from '../SignupPage.js';
 import WelcomeBack from './WelcomeBack.js';
 import HomePage from './HomePage.js';
-import NewMessagePage from '../NewMessagePage.js';
+import NewMessagePage from './NewMessagePage.js';
 import Friends from '../Friends.js';
 import Gold from '../Gold.js';
 import Settings from '../Settings.js';
