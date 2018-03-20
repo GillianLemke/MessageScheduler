@@ -29,11 +29,41 @@ namespace :jobs do
 
       for message in messages do
         now = Time.now.utc
+        send = false
 
-        # TODO: change back to 5 minutes
-        if message.time < (now + 5.hours).utc && message.time > (now - 5.hours) then
+        pp message.repeat
+        pp message.time
+        pp now
+        pp now + 5.minutes
+        pp now - 5.minutes
+
+        minus_five = now - 5.minutes
+        plus_five = now + 5.minutes
+        time = message.time
+
+        pp (message.repeat == 0 || message.repeat == nil)
+        pp (time < plus_five) and (time > minus_five)
+
+        if (message.repeat == 0 || message.repeat == nil) and (time < plus_five) and (time > minus_five) then
           pp message
+          send = true
+        elsif message.repeat then
+          if (message.repeat == 1) && message.time.month == now.month && message.time.day == now.day && message.time.hour == now.hour && message.time.minute < (now.minute + 5.minutes) && message.time.minute > (now.minute + 5.minutes) then
+            pp message
+            send = true
+          elsif (message.repeat == 2) && message.time.day == now.day && message.time.minute < (now.minute + 5.minutes) && message.time.minute > (now.minute + 5.minutes) then
+            pp message
+            send = true
+          elsif (message.repeat == 3) && message.time.wday == now.wday && message.time.hour == now.hour && message.time.minute < (now.minute + 5.minutes) && message.time.minute > (now.minute + 5.minutes) then
+            pp message
+            send = true
+          elsif (message.repeat == 4) && message.time.hour == now.hour && message.time.minute < (now.minute + 5.minutes) && message.time.minute > (now.minute + 5.minutes) then
+            pp message
+            send = true
+          end
+        end
 
+        if send then
           m = Mail.new(
             to: message[:to],
             from: "glemke1@emich.edu",
@@ -44,7 +74,6 @@ namespace :jobs do
 
           message_object = Google::Apis::GmailV1::Message.new(raw:m.to_s)
           service.send_user_message("me", message_object)
-
         end
       end
     end
