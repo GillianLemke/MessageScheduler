@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import LoginPage from './containers/LoginPage.js';
 
-class App extends Component {
+export default class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <LoginPage />
-      </div>
+      <div><LoginPage /></div>
     );
   }
 }
-
-export default App;

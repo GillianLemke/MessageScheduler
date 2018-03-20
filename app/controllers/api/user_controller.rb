@@ -1,8 +1,8 @@
 module Api
   class UserController < ApplicationController
     def index
-      @ideas = User.all
-      render json: @ideas
+      @user = User.where(username: params[:username])
+      render json: @user
     end
   end
 end

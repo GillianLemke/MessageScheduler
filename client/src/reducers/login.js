@@ -1,4 +1,3 @@
-import React from 'react';
 import * as ActionTypes from '../constants/action-types.js';
 
 const initialState = {
@@ -8,26 +7,33 @@ const initialState = {
   error: undefined,
 }
 
-const LoginReducer = (state = initialState, action) => {
+const LoginReducer = (state, action) => {
+  console.log(action);
   switch (action.type) {
-    case ActionTypes.LOGIN_LOADING:
+    case ActionTypes.LOGIN_LOADING: {
+      console.log('login loading');
       return {
         isLoading: true,
-        ...initialState,
       }
+    }
+    // break;
     case ActionTypes.LOGIN_FAILED:
       return {
-        ...initialState,
-        error: state.error,
+        isLoading: false,
+        error: action.error,
       }
+      // break;
     case ActionTypes.LOGIN_SUCCESSFUL:
       return {
-        username: state.username,
+        isLoading: false,
+        username: action.username,
         loggedin: true,
-        ...initialState,
       }
-    default:
-      return state;
+      // break;
+    default: {
+      console.log("pls no");
+      return { ...state };
+    }
   }
 }
 

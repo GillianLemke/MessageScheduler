@@ -14,3 +14,15 @@ for i in 0..20
     phone: Faker::Number.number(10),
     email: Faker::Internet.unique.email)
 end
+
+for i in 0..40
+  Message.create!(
+    to: Faker::Internet.email,
+    from: 'Priscilla',
+    time: Faker::Time.between(DateTime.now + 7, DateTime.now + 14),
+    message_type: 1,
+    reminder: Faker::Boolean.boolean,
+    reminder_time: Faker::Time.between(DateTime.now, DateTime.now + 7),
+    repeat: Random.rand(5),
+    text: Faker::HarryPotter.quote)
+end

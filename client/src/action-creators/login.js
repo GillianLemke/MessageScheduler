@@ -3,6 +3,8 @@ import {
   LOGIN_FAILED,
   LOGIN_SUCCESSFUL
 } from '../constants/action-types.js';
+// import { getMessageRequest } from './homepage.js';
+import $ from 'jquery';
 
 const loginLoading = () => ({
   type: LOGIN_LOADING,
@@ -13,21 +15,40 @@ const loginFailed = (error) => ({
   error,
 });
 
-const loginSuccessful = (username) => ({
+const loginSuccessful = (user) => ({
   type: LOGIN_SUCCESSFUL,
-  username,
+  username: user.username,
 });
+
+
+const loginUtility = (username, password) => {
+  return $.ajax({
+    type: 'GET',
+    url: `http://localhost:3001/api/user`,
+    data: {username: username, password: password},
+    async: false,
+    crossDomain: true,
+    beforeSend: function (xhr) {
+      if (xhr && xhr.overrideMimeType) {
+        xhr.overrideMimeType('application/json;charset=utf-8');
+      }
+    },
+    dataType: 'json',
+    success: function (data) {
+      return dispatch => {
+        dispatch(loginSuccessful(data[0]));
+      }
+    }
+  });
+}
 
 export const loginRequest = (username, password) => {
   return dispatch => {
     dispatch(loginLoading());
-    return fetch('/api/login/${username}/')
-      .then(
-          response => response.json(),
-          error => dispatch(loginFailed(error)),
-        )
-        .then(json =>
-          dispatch(loginSuccessful(username))
-        )
+    return loginUtility(username, password)
+      .then(response => dispatch(loginSuccessful(response[0])))
+      .catch(error => {
+        return dispatch(loginFailed(error));
+      });
   }
 }

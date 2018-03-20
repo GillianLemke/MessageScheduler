@@ -15,6 +15,10 @@ gem 'pg', '~> 0.18'
 
 gem 'faker'
 gem 'foreman', '~> 0.82.0'
+gem 'rack-cors', :require => 'rack/cors'
+gem 'whenever', require: false
+gem 'mail'
+gem 'google-api-client'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
