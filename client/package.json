@@ -67,7 +67,7 @@
     "test": "jest",
     "test:watch": "npm test -- --watch"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "https://infinite-waters-85309.herokuapp.com:3001",
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
@@ -111,6 +111,6 @@
     "extends": "react-app"
   },
   "devDependencies": {
-  
+
   }
 }

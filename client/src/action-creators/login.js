@@ -24,7 +24,7 @@ const loginSuccessful = (user) => ({
 const loginUtility = (username, password) => {
   return $.ajax({
     type: 'GET',
-    url: `http://localhost:3001/api/user`,
+    url: `https://infinite-waters-85309.herokuapp.com:3001/api/user`,
     data: {username: username, password: password},
     async: false,
     crossDomain: true,
