@@ -21,7 +21,7 @@ const addNewMessageSuccessful = () => ({
 const addNewMessageUtility = (message) => {
   return $.ajax({
     type: 'POST',
-    url: `https://infinite-waters-85309.herokuapp.com:3001/api/message`,
+    url: `https://infinite-waters-85309.herokuapp.com/api/message`,
     data: {message: message},
     async: false,
     crossDomain: true,

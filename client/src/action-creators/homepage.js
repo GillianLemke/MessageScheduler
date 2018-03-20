@@ -22,7 +22,7 @@ const getMessagesSuccessful = (messages) => ({
 const getMessageUtility = (username) => {
   return $.ajax({
     type: 'GET',
-    url: `https://infinite-waters-85309.herokuapp.com:3001/api/message`,
+    url: `https://infinite-waters-85309.herokuapp.com/api/message`,
     data: {username: username},
     async: false,
     crossDomain: true,
